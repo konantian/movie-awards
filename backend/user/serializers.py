@@ -2,12 +2,20 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 
 from .models import User
+from movie.serializers import MovieSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
+    favorite_movies = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = User
-        fields = ["id", "username", "first_name", "last_name"]
+        fields = ["id", "username", "first_name", "last_name", "favorite_movies"]
+
+    def get_favorite_movies(self, obj):
+        favorite_movies = obj.favorite_movies.all()
+        serializer = MovieSerializer(instance=favorite_movies, many=True)
+        return serializer.data
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):

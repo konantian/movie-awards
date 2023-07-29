@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.authContainer{
+  display: flex;
+  justify-content: center;
+  flex: 1 0 auto;
+  align-items: center;
+}
+
+.authButton{
+  width: 120px;
+}
+
+.loginButtons{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}

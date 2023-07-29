@@ -13,7 +13,7 @@ class User(AbstractUser):
     user_permissions = None
     is_superuser = None
     is_staff = None
-    is_active = None
+    is_active = True
     email = None
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     favorite_movies = models.ManyToManyField(Movie, related_name='favorite_movies', blank=True)

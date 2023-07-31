@@ -1,5 +1,5 @@
 import axios from "axios";
-import {USER_PROFILE_API, MOVIE_DETAILS_API, SEARCH_MOVIE_TITLE_API} from "../../utils/api";
+import {USER_PROFILE_API} from "../../utils/api";
 
 export const logout = () => {
     return {
@@ -20,58 +20,15 @@ export const fetchUserSuccess = (user) => {
     }
 }
 
-export const fetchMovieRequest = () => {
-    return {
-        type : 'FETCH_MOVIE_REQUEST'
-    }
-}
-
-export const fetchMovieSuccess = (movie) => {
-    return {
-        type : 'FETCH_MOVIE_SUCCESS',
-        payload: movie
-    }
-}
-
-export const searchMovieRequest = () => {
-    return {
-        type : 'SEARCH_MOVIE_REQUEST'
-    }
-}
-
-export const searchMovieSuccess = (movie) => {
-    return {
-        type : 'SEARCH_MOVIE_SUCCESS',
-        payload: movie
-    }
-}
-
 export const fetchUser = (username) => {
+    const config = {
+        headers : {"Authorization": `JWT ${localStorage.getItem("token")}`}
+    }
     return (dispatch) => {
         dispatch(fetchUserRequest);
-        axios.get(USER_PROFILE_API(username)).then(res => {
+        axios.get(USER_PROFILE_API(username), config).then(res => {
             const user = res.data;
             dispatch(fetchUserSuccess(user));
-        })
-    }
-}
-
-export const fetchMovie = (imdbId) => {
-    return (dispatch) => {
-        dispatch(fetchMovieRequest);
-        axios.get(MOVIE_DETAILS_API(imdbId)).then(res => {
-            const movie = res.data;
-            dispatch(fetchMovieSuccess(movie));
-        })
-    }
-}
-
-export const searchMovie = (title) => {
-    return (dispatch) => {
-        dispatch(searchMovieRequest());
-        axios.get(SEARCH_MOVIE_TITLE_API(title)).then(res => {
-            const movie = res.data;
-            dispatch(searchMovieSuccess(movie));
         })
     }
 }

@@ -1,5 +1,5 @@
 from rest_framework import viewsets, permissions
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Movie
 from .serializers import MovieSerializer
@@ -10,5 +10,4 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
 
     serializer_class = MovieSerializer
-    authentication_classes = (JSONWebTokenAuthentication, )
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (IsAuthenticated,)

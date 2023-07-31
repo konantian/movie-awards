@@ -12,32 +12,23 @@ export const transformCircular = createTransform(
 
 const persistConfig = {
       key: "movie",
-      whitelist: ["user", "loading"],
+      whitelist: ["user"],
       storage, // if needed, use a safer storage
       transforms: [transformCircular]
 };
 
 const initialState = {
     user : null,
-    loading: false,
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'FETCH_USER_REQUEST':
-            return {...state, loading: true};
+            return {...state};
         case 'FETCH_USER_SUCCESS':
-            return {...state, loading: false, user: action.payload};
-        case 'FETCH_MOVIE_REQUEST':
-            return {...state, loading: true};
-        case 'FETCH_MOVIE_SUCCESS':
-            return {...state, loading: false, imdbId: action.payload};
-        case 'SEARCH_MOVIE_REQUEST':
-            return {...state, loading: true};
-        case 'SEARCH_MOVIE_SUCCESS':
-            return {...state, loading: false, movie: action.payload};
+            return {...state, user: action.payload};
         case 'LOGOUT':
-            return {...state, loading: false, user: null};
+            return {...state, user: null};
         default:
             return state;
     }

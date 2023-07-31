@@ -22,6 +22,7 @@ const LoginForm = ({formRef, toggle}) => {
         axios.post(LOGIN_API, form_data, config).then((res) => {
             message.success("Welcome to our movie search system.")
             dispatch(fetchUserSuccess(res.data.user));
+            localStorage.setItem("token", res.data.token);
             navigate('/search');
         }).catch((err) => {
              message.error("Your username may not exist or your password is not correct.");

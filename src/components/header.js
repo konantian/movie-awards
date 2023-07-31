@@ -12,6 +12,7 @@ const Header = ({showMyMovieToggle}) => {
 
     const handleLogout = () => {
         dispatch(logout());
+        localStorage.removeItem("token");
         message.success(`Thanks for using our movie search system, ${username}!`);
         navigate("/");
     };

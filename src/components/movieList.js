@@ -30,7 +30,9 @@ const MovieList = ({movieData}) => {
             message.error("You have reached the maximum of five movies limit.");
         } else {
             const config = {
-              headers : {"Content-type": "application/json"}
+                headers : {
+                    "Content-type": "application/json",
+                    "Authorization": `JWT ${localStorage.getItem("token")}`}
             }
             const data = {
                 movie: {"title": movie.Title,
@@ -52,7 +54,8 @@ const MovieList = ({movieData}) => {
 
     const handleRemove = (imdbId) => {
         const config = {
-          headers : {"Content-type": "application/json"}
+            headers : {"Content-type": "application/json",
+                    "Authorization": `JWT ${localStorage.getItem("token")}`}
         }
         const data = {
             "imdb_id": imdbId,

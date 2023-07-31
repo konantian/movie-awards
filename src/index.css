@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #94ccef;
 }
 
 code {
@@ -16,9 +17,11 @@ code {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 100vh;
 }
 
 .authContainer{
+  flex-direction: column;
   display: flex;
   justify-content: center;
   flex: 1 0 auto;
@@ -29,9 +32,86 @@ code {
   width: 120px;
 }
 
-.loginButtons{
+.authButtonContainer{
+  min-width: 23vh;
+  font-size: 18px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: row;
+}
+
+.inputField{
+  border-radius: 25px;
+}
+
+.promptText{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.headerButton{
+  width : 120px;
+  margin-left: 20px;
+}
+
+.searchBarContainer {
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.searchBar{
+  width: 500px;
+}
+
+.searchFormContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchButton {
+  width: 120px;
+  margin-left: 20px;
+}
+
+.movieListContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.actionButton {
+  font-size: 25px;
+}
+
+.deleteIcon{
+  color: #ff4d4f;
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.titleText {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.likeIcon{
+  color: #fadb14;
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.ant-list-items {
+  width: 650px;
+}
+.ant-list-item-meta-title{
+  width: 400px;
 }

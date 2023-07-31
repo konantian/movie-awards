@@ -39,7 +39,7 @@ class UserViewSet(viewsets.ModelViewSet):
                     else:
                         return Response(movie_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
                 else:
-                    if existing_movie.imdb_id != movie_data['imdb_id']:
+                    if existing_movie not in instance.favorite_movies.all():
                         instance.favorite_movies.add(existing_movie)
                     else:
                         return Response({"Error": "This movie is already in your favorite list"},

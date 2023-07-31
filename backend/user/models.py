@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from movie.models import Movie
@@ -15,7 +13,7 @@ class User(AbstractUser):
     is_staff = None
     is_active = True
     email = None
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    username = models.CharField(max_length=150, primary_key=True)
     favorite_movies = models.ManyToManyField(Movie, related_name='favorite_movies', blank=True)
 
     def __str__(self):

@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "username", "first_name", "last_name", "favorite_movies"]
+        fields = ["username", "first_name", "last_name", "favorite_movies"]
 
     def get_favorite_movies(self, obj):
         favorite_movies = obj.favorite_movies.all()

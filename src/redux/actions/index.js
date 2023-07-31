@@ -1,5 +1,5 @@
 import axios from "axios";
-import {USER_PROFILE_API, MOVIE_DETAILS_API, SEARCH_API} from "../../utils/api";
+import {USER_PROFILE_API, MOVIE_DETAILS_API, SEARCH_MOVIE_TITLE_API} from "../../utils/api";
 
 export const logout = () => {
     return {
@@ -69,7 +69,7 @@ export const fetchMovie = (imdbId) => {
 export const searchMovie = (title) => {
     return (dispatch) => {
         dispatch(searchMovieRequest());
-        axios.get(SEARCH_API(title)).then(res => {
+        axios.get(SEARCH_MOVIE_TITLE_API(title)).then(res => {
             const movie = res.data;
             dispatch(searchMovieSuccess(movie));
         })
